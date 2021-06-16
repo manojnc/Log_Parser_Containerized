@@ -10,7 +10,7 @@ Installation :
 
 Installing this tool requires docker to be pre installed in the system. Please follow the steps below to configure the webserver.
 
-1) Copy the files carta_solution.py,nginx and Dockerfile to a system where docker is installed.
+1) Copy the files carta_solution.py,nginx and Dockerfile to a system where docker is installed. Ensure all the files are in same directory.
 2) Build the docker image using the following commands from a user who is authorized to issue docker management commands.
 docker build -t solution-image .				# Solution-image is a custom name and can be modified as per user convinience
 3) Use the image that was built in step 2 to start the container.
