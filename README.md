@@ -15,7 +15,7 @@ Installing this tool requires docker to be pre installed in the system. Please f
 docker build -t solution-image .				# Solution-image is a custom name and can be modified as per user convinience
 3) Use the image that was built in step 2 to start the container.
 docker image ls		--> get the image id for Solution-image  from this command and use it to start the container   
-docker container run -it --name Solution-container -d -p 8080:5100 <Image Id>			# Solution-container is the custom name of the container and can be modified.
+docker container run -it --name Solution-container -d -p 8080:5100 < Image Id >			# Solution-container is the custom name of the container and can be modified.
 
 Using the Tool :
 ================
