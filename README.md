@@ -3,7 +3,7 @@
 Introduction :
 ==============
 
-This tool is designed to parse a given log file and aggregate the metrics around incoming client ips. The job is hosted on a webserver and containerized using docker and the output is made available through API access on port 8080 of the host running the container. 
+This tool is designed to parse a given log file and aggregate the metrics around incoming client ips. The job is hosted on a webserver and containerized using docker. Output is made available through API access on port 8080 of the host running the container. 
 
 Installation :
 ==============
