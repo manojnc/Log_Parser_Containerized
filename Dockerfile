@@ -3,4 +3,4 @@ ADD carta_solution.py /
 ADD nginx /
 RUN pip install flask
 RUN pip install ipaddress
-CMD [ "python", "./carta_solution.py" ]
+ENTRYPOINT [ "python", "./carta_solution.py" ]

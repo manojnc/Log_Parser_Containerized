@@ -1,25 +1,24 @@
 from ipaddress import ip_network, ip_address
-from flask import Flask
+from flask import Flask,request,jsonify
 
 class solution():
 
     def log_parser(self,filepath):
-        file=open(filepath,"r")
-        lines=file.readlines()
         ip_map={}
-        for row in lines:                                   # Iterate through each line in the log file and extract the IP address
-            if row=="":
-                continue
-            ip=row.split(" ")[0]
-            try:                                            # only filter valid IP's
-                ip_address(ip)
-            except Exception as e:
-                print("invalid IP {}, skipping this log line ".format(ip) + row )
-                continue
-            if ip in ip_map.keys():                         # if an ip is already present in the result object, increment the counter for that IP
-                ip_map[ip]+=1
-            else:
-                ip_map[ip]=1
+        with open(filepath,"r") as infile:
+            for row in infile:                                   # Iterate through each line in the log file and extract the IP address
+                if row=="":
+                    continue
+                ip=row.split(" ")[0]
+                try:                                            # only filter valid IP's
+                    ip_address(ip)
+                except Exception as e:
+                    print("invalid IP {}, skipping this log line ".format(ip) + row )
+                    continue
+                if ip in ip_map.keys():                         # if an ip is already present in the result object, increment the counter for that IP
+                    ip_map[ip]+=1
+                else:
+                    ip_map[ip]=1
         return ip_map
 
     def classify_ip(self,incoming_ips,buckets):
@@ -53,9 +52,9 @@ class solution():
     def web_output(self,combined_result):
         app = Flask(__name__)
 
-        @app.route('/')
+        @app.route('/',methods=['GET'])
         def index():
-            return combined_result
+            return jsonify(combined_result)
 
         app.run(debug=True, host='0.0.0.0', port=5100)
 
